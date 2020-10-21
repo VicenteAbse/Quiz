@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta name="titulo" content="Quiz Formulario">
+        <meta name="descripcion" content="Formulario de informacion del ciudadano chileno">
+        <meta name="palabras clave" content="Formulario, RUT, DNI, documento">
+        <meta name="autor" content="Vicente Abse">
+      </head>
+      <body>
+        <h1> FORMULARIO </h1>
+        <form action="ejemplo.php" method="get">
+            <p>Nombre: <input type="text" name="nombre" size="40" required></p>
+            <p>Correo electronico:  <input type="email" name="email" size="29" required></p>
+            <p>Tipo de documento:
+              <input type="radio" name="td" value="dni" onclick="handleClick(this);"> DNI
+              <input type="radio" name="td" value="rut" onclick="handleClick(this);"> RUT
+
+              <div id="td-input" style="display: block;">
+                <input type="text" id="dni" style="display: none;" name="td-input" required>
+                <input type="number" id="rut" style="display: none;" name="td-input" required>
+              </div>
+              
+
+              <script>
+                function handleClick(td){
+                  var ele = document.getElementsByName('td'); 
+                  var idEscogido;
+              
+                  for(i = 0; i < ele.length; i++) { 
+                    document.getElementById(ele[i].value).style.display = "none";
+                    if(ele[i].checked) {
+                      console.log(ele[i].value)
+                      idEscogido = ele[i].value;
+                      
+                    }
+                      
+                  } 
+                  document.getElementById(idEscogido).style.display = "block";
+                }
+              </script>
+            </p>
+            <p>
+              <input type="submit" value="Enviar" onclick="enviar()">
+        
+            </p>
+        </form>
+      </body>
+    
+</html>
